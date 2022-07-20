@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: health-app
+  namespace: otus-hm-01
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+    - host: arch.homework
+      http:
+        paths:
+          - pathType: Prefix
+            path: /otusapp(/\w*/|$)(.*)
+            backend:
+              service:
+                name: health-app
+                port:
+                  number: 80
+          - pathType: Prefix
+            path: /()(.*)
+            backend:
+              service:
+                name: health-app
+                port:
+                  number: 80

@@ -1,2 +1,1 @@
-# otus-ms-arch
-Otus Microservice Architecture
+# Домашние работы по курсу Микросервисная Архитектура Отус

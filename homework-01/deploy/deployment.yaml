@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: otus-hm-01
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: health-app
+  namespace: otus-hm-01
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 8000
+  selector:
+    app: health-app
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: health-app
+  namespace: otus-hm-01
+spec:
+  selector:
+    matchLabels:
+      app: health-app
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: health-app
+    spec:
+      containers:
+        - image: tarasovsn/health-img:0.0.5
+          name: health-app
+          ports:
+            - containerPort: 8000
+          imagePullPolicy: IfNotPresent

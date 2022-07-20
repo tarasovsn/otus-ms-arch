@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>ru.otus</groupId>
 	<artifactId>health</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>health</name>
 	<description>App for homework-1</description>
 	<properties>
@@ -39,6 +39,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<finalName>health</finalName>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
